@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     #personal installed apps
     'projects',
+    'bootstrap4',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
