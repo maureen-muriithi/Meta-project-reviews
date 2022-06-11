@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Project(models.Model):
+    '''
+    This is a class model to get and display projects
+    '''
     title = models.CharField(max_length=140)
     user = models.ForeignKey(User, )
     image = models.ImageField(upload_to = 'projects/', default='')
@@ -14,6 +17,10 @@ class Project(models.Model):
         return self.title
 
 class Profile(models.Model):
+    '''
+    This is a class model to get and display a user's profile
+
+    '''
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile' )
     name = models.CharField(max_length=140)
     bio = models.TextField()
