@@ -7,7 +7,7 @@ class Project(models.Model):
     This is a class model to get and display projects
     '''
     title = models.CharField(max_length=140)
-    user = models.ForeignKey(User, )
+    user = models.ForeignKey(User, null=True, blank=True, related_name='projects', on_delete=models.CASCADE)
     image = models.ImageField(upload_to = 'projects/', default='')
     description = models.TextField()
     country = models.CharField(max_length=140)
@@ -25,7 +25,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=140)
     bio = models.TextField()
     image = models.ImageField(upload_to = 'images/', default='')
-    phone = models.IntegerField(max_length=10)
+    phone = models.CharField(max_length=10)
     email = models.EmailField()
 
     def __str__(self):
