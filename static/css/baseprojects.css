@@ -8,8 +8,20 @@
   .bottom-left {
     position: absolute;
     bottom: 8px;
-    left: 16px;
+    left: 36px;
+  }
+
+  #indexBtn{
+    background-color: lawngreen;
     color: white;
+    width: 200px;
+    border-radius: 25px;
+    height: 55px;
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-align: center;
+    align-items: center;
+    padding-bottom: 5px;
   }
   
   /* Top left text */

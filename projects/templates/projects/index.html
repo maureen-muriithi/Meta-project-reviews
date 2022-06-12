@@ -21,10 +21,10 @@
 
     <div class="container-fluid">
       <img src="../../../static/images/projbckg1.jpg" alt="Snow" style="width:100%;">
-      <button class=" bottom-left btn btn-sm" type="submit" name="register" value="register"> Get Started
-        <a href="{% url 'register_user'%}"></a>
-    </button>
-      <h3 class="top-left" style="font-style: italic;">Site Today: {{date|date:"l d-F Y"}}</h3>
+      <a href="{% url 'register'%}">
+        <li class=" bottom-left btn border shadow" style="font-size: 1.8rem; font-weight:800 ;" id="indexBtn">Get started</li>
+      </a>
+      <h5 class="top-left" style="font-style: italic;">Site Today: {{date|date:"l d-F Y"}}</h5>
       <div class="top-right">Top Right</div>
       <div class="centered">Centered</div>
     </div>
