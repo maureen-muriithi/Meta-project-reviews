@@ -15,6 +15,8 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+    
+    
 
 class Profile(models.Model):
     '''
@@ -30,6 +32,7 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+
 
 
 

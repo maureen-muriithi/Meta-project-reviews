@@ -15,14 +15,23 @@
             </button>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="#">Home</a>
-                <a class="dropdown-item" href="#">Profile</a>
+                {% if user.is_authenticated %}
+
+                <a class="dropdown-item" href="{%url 'profile' %}">Profile</a>
                 <a class="dropdown-item" href="#">Settings</a>
                 <a class="dropdown-item" href="#">Jobs and Talent</a>
                 <a class="dropdown-item" href="#">Blog</a>
 
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" href="/logout">Logout</a>
               </div>
+              {% else %}
+              <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/accounts/login">Login</a>
+              </div>
+              {% endif %}
+
+
           </div>
     </div>
 

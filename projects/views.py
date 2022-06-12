@@ -4,9 +4,10 @@ from django.contrib.auth.models import User
 import datetime as dt
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
+from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
-from .forms import RegisterForm, NewProjectForm
+from .forms import RegisterForm, NewProjectForm, UpdateProfileForm
 from .email import send_welcome_email
 
 
@@ -59,6 +60,34 @@ def login_user(request):
   form = AuthenticationForm()
 
   return render(request=request, template_name="django_registration/login.html", context={"form":form})
+
+
+
+@login_required(login_url='/accounts/login/')
+def profile(request):
+    user = request.user
+    if not user:
+        return redirect('home')
+    if request.method == 'POST':
+        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if profile_form.is_valid():
+            profile_form.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        profile_form = UpdateProfileForm(instance=request.user.profile)
+
+
+        profile = Profile.objects.get(user=user)
+
+    args = {
+        'user': user,
+        "current_user":request.user,
+        'profile': profile,
+        'profile_form': profile_form,
+    }
+    print(profile.user.username)
+    print(profile.profile_picture)
+    return render(request, 'projects/profile.html', args)
 
 
   
