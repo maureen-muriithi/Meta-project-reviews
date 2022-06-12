@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load bootstrap4 %}
-{% block content %}
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="{% static 'css/baseprojects.css' %}">
 
+{% block content %}
 
-<div class="container" style="margin-top:8%; background-color: black;">
+<div class="container" style="margin-top:8%; background-color: black; padding-top: 100px;">
     <div class="content-section">
         <div class="media">
             <div class="container">
@@ -65,7 +65,9 @@
             </div>
         </div>
     </div>
+    <br>
     <hr class="" style="height: 5px; background-color: lawngreen; ">
+    <br>
     <div class="card-columns">
         {% for project in user.projects.all %}
             <div class="card" style="background-color: white;">

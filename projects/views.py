@@ -64,7 +64,6 @@ def login_user(request):
 
 
 @login_required(login_url='/accounts/login/')
-@login_required
 def profile(request):
     user = request.user
     # projects = Project.objects.filter(user=request.user).all(),
@@ -73,6 +72,16 @@ def profile(request):
         'projects': Project.objects.filter(user=request.user).all()
     }
     return render(request, 'projects/profile.html', args)
+
+@login_required(login_url='/accounts/login/')
+def display_projects(request):
+    projects = Project.objects.all()
+
+    args = {
+        "projects": projects,
+    }
+
+    return render(request, 'projects/projects.html', args)
 
 
   
