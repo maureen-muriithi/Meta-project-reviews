@@ -7,6 +7,10 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from .forms import RegisterForm, NewProjectForm
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from .email import send_welcome_email
+
 
 # Create your views here.
 
@@ -28,10 +32,13 @@ def register_user(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
-          user = form.save()
-          login(request, user)
-          messages.success(request, "Registration successful." )
-        return redirect("/login")
+            user = form.save()
+            email = form.cleaned_data['email']
+            send_welcome_email(user,email)
+
+            login(request, user)
+            messages.success(request, "Registration successful." )
+            return redirect("/login")
     messages.error(request, "Unsuccessful registration. Invalid information.")
     form = RegisterForm()
     return render(request=request, template_name="django_registration/registration_form.html", context= {'form': form})
@@ -54,6 +61,19 @@ def login_user(request):
   form = AuthenticationForm()
 
   return render(request=request, template_name="registration/login.html", context={"form":form})
+
+def send_welcome_email(name,receiver):
+    # Creating message subject and sender
+    subject = 'Welcome to Meta Projects Reviews'
+    sender = 'maureen2muriithi.com'
+
+    #passing in the context vairables
+    text_content = render_to_string('email/newsemail.txt',{"name": name})
+    html_content = render_to_string('email/newsemail.html',{"name": name})
+
+    msg = EmailMultiAlternatives(subject,text_content,sender,[receiver])
+    msg.attach_alternative(html_content,'text/html')
+    msg.send()
 
 
 

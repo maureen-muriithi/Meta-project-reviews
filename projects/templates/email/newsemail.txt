@@ -1,0 +1,3 @@
+Hello {{name}}
+Congratulations for successfuly joining the Meta Project awards.
+Welcome, enjoy unlimited posting projects, browsing other brojects and reviewing/rating on projects that interest you. Get started and have fun!!
