@@ -11,12 +11,25 @@ class Project(models.Model):
     image = models.ImageField(upload_to = 'projects/', default='')
     description = models.TextField()
     country = models.CharField(max_length=140)
-    project_link = models.CharField(max_length=2048)
+    project_link = models.URLField(max_length=2048)
 
     def __str__(self):
         return self.title
     
-    
+    def save_project(self):
+        self.save()
+
+    def delete_project(self):
+        self.delete()
+        
+    @classmethod
+    def search_project(cls, title):
+        return cls.objects.filter(title__icontains=title).all()
+   
+    @classmethod
+    def all_projects(cls):
+        return cls.objects.all()   
+
 
 class Profile(models.Model):
     '''
@@ -25,7 +38,7 @@ class Profile(models.Model):
     '''
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile' )
     name = models.CharField(max_length=140)
-    bio = models.TextField()
+    bio = models.TextField(null=True, default="This is my fine Bio", blank=True)
     profile_picture = models.ImageField(upload_to = 'images/', default='')
     phone = models.CharField(max_length=10)
     email = models.EmailField()
@@ -33,6 +46,8 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
+    def save(self, *args, **kwargs):
+        super(Profile, self).save( *args, **kwargs)
 
 
 
