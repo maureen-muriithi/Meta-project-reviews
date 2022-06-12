@@ -64,29 +64,14 @@ def login_user(request):
 
 
 @login_required(login_url='/accounts/login/')
+@login_required
 def profile(request):
     user = request.user
-    if not user:
-        return redirect('home')
-    if request.method == 'POST':
-        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
-        if profile_form.is_valid():
-            profile_form.save()
-            return HttpResponseRedirect(request.path_info)
-    else:
-        profile_form = UpdateProfileForm(instance=request.user.profile)
-
-
-        profile = Profile.objects.get(user=user)
-
+    # projects = Project.objects.filter(user=request.user).all(),
     args = {
         'user': user,
-        "current_user":request.user,
-        'profile': profile,
-        'profile_form': profile_form,
+        'projects': Project.objects.filter(user=request.user).all()
     }
-    print(profile.user.username)
-    print(profile.profile_picture)
     return render(request, 'projects/profile.html', args)
 
 
