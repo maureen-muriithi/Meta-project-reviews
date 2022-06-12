@@ -49,5 +49,15 @@ class Profile(models.Model):
     def save(self, *args, **kwargs):
         super(Profile, self).save( *args, **kwargs)
 
+class Review(models.Model):
+    '''
+    This a class model to enable the user to review and rate projects
+    '''
+    design = models.IntegerField()
+    content = models.IntegerField()
+    creativity = models.IntegerField()
+    usability = models.IntegerField()
+    project = models.ForeignKey(Project, null=True, on_delete=models.CASCADE)
+
 
 
