@@ -7,8 +7,6 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from .forms import RegisterForm, NewProjectForm
-from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
 from .email import send_welcome_email
 
 
@@ -60,20 +58,12 @@ def login_user(request):
           messages.error(request,"Invalid username or password.")
   form = AuthenticationForm()
 
-  return render(request=request, template_name="registration/login.html", context={"form":form})
+  return render(request=request, template_name="django_registration/login.html", context={"form":form})
 
-def send_welcome_email(name,receiver):
-    # Creating message subject and sender
-    subject = 'Welcome to Meta Projects Reviews'
-    sender = 'maureen2muriithi.com'
 
-    #passing in the context vairables
-    text_content = render_to_string('email/newsemail.txt',{"name": name})
-    html_content = render_to_string('email/newsemail.html',{"name": name})
+  
 
-    msg = EmailMultiAlternatives(subject,text_content,sender,[receiver])
-    msg.attach_alternative(html_content,'text/html')
-    msg.send()
+
 
 
 
