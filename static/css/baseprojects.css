@@ -1,0 +1,30 @@
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  
+  /* Bottom left text */
+  .bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    color: white;
+  }
+  
+  /* Top left text */
+  .top-left {
+    position: absolute;
+    top: 108px;
+    left: 36px;
+    color: white;
+  }
+  
+  
+  /* Centered text */
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
