@@ -1,48 +1,45 @@
-{% extends "django_registration/base.html" %} 
-{% load bootstrap4 %}
+{%extends 'registration/base.html'%}
+{%load bootstrap4%}
 
-{% block content %}
-<br><br><br>
-
-<!-- bootstrap link -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+{%block content%}
+<br><br><br>
 <div class="container">
   <div class="row">
     <!-- Empty div -->
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-4">
+    <div class="col-md-4"></div>
+    <div class="col-md-6">
       {% if form.errors %}
-        <p> Some Information Might be Incorrect </p>
+        <p> Password or Username is incorrect </p>
       {% endif %}
       <div class="panel panel-default">
 
         <div class="panel-heading">
-          <h3 class="text-center text-white">Sign Up for Meta Projects</h3>
+          <h3 class="text-white">Sign In </h3>
         </div>
-        <br>
         <div class="panel-body">
 
           <form method="POST" style="color: lawngreen;" >
             {% csrf_token %}
             {% bootstrap_form form %}                   
-            <button class="btn btn-outline" style="background-color: lawngreen ; justify-content: center;" type="submit">Register</button>
+            <br>
+            <button class="btn btn-outline" style="background-color: lawngreen ; justify-content: center;" type="submit">Login</button>
           </form>
           <br>
-          <p class="text-center text-white" >If you already have an account,
-            <a href="{%url 'login'%}" style="color: white;" >
-              <button class="btn btn-outline" style="background-color: lawngreen ; justify-content: center;" type="submit">Login</button>
+          <p class="text-white" >Do not have an account? <br>
+            <a href="{%url 'register'%}" style="color: white;" > Create an account here, 
+              <button class="btn btn-outline" style="background-color: lawngreen;" type="submit">Sign Up</button>
             </a></p>
           </div>
 
+        </div>
       </div>
-
     </div>
+    
     <!-- empty div -->
     <div class="col-md-4"></div>
   </div>
 </div>
-
 
 {% endblock %}
