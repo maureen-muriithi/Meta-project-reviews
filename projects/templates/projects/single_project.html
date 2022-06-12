@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+{% block content %}
+
+    {% for project in projects %}
+<div class="container-fluid" style="background-color: rgba(0, 0, 0, 0.842); padding-top: 50px;">
+    <div class="container-1">
+        <div class="container-2" style="width: 80%; margin-left: 10%;" >
+            <img src="{{project.image.url}}" alt="Snow" style="width:100%;">
+            <div class="centered">{{ project.title }}</div>
+        </div>
+        <br>
+    </div>
+    <div class="container-details" style="margin-left:10%;">
+        <p style="color: lawngreen;" > Developer: <span style="font-weight: 500; color: white;" >{{ project.user.username }}</span></p>
+        <p style="color: lawngreen;"> Country:  <span style="font-weight: 500; color: white;">{{ project.country }}</span></p>
+        <p style="color: lawngreen;" > Description: <br> <span style="font-weight: 500; color: white;" >{{ project.description }}</span></p>
+    </div>
+    <a class="inline text-center" href="{{project.project_link}}" style="margin-left: 45%;">
+        <li class="btn border shadow" style="font-size: 1.5rem; font-weight:800 ;" id="indexBtn2"> View Project </li>
+    </a>
+</div>
+  {% endfor %}
+{% endblock content%}

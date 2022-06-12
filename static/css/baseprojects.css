@@ -23,6 +23,19 @@
     align-items: center;
     padding-bottom: 5px;
   }
+  #indexBtn2{
+    background-color: lawngreen;
+    color: white;
+    width: fit-content;
+    border-radius: 25px;
+    height: 45px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-align: center;
+    align-items: center;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
   
   /* Top left text */
   .top-left {

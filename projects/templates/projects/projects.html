@@ -12,12 +12,12 @@
         <div class="card" style="background-color: white;">
             <div class="card-body">
                 <img style="height: 150px; height: 300px;" src="{{project.image.url}}" alt="{{project.title}}" class="card-img">
-                <p id="overlay"class="text" style="justify-content: start;"> 
-                    <span style="color: lawngreen; text-align: left; font-size: larger; font-weight: 600;">{{project.title}}</span><br>
-                    <span style="color: lawngreen"> Country:{{project.country}}</span> <br>
-                    <span style="color: lawngreen"> Developer:{{project.user.username}}</span>
+                <p id="overlay"class="text" style="justify-content: start; color: lawngreen;"> 
+                    <span style="color: lawngreen; text-align: left; font-size: x-large; font-weight: 600;">{{project.title}}</span><br>
+                    Country: <span style="color: black">{{project.country}}</span> <br>
+                    Developer: <span style="color: black">{{project.user.username}}</span>
                 </p>
-                    <a class="D-block mx-auto" style="justify-content: end;" href="">See More..</a>
+                    <a class="D-block mx-auto" style="justify-content: end;" href="{%url 'single_project' project.id %}">See More..</a>
             </div>
         </div>
     {% endfor %}

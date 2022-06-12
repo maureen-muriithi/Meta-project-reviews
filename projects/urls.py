@@ -8,7 +8,8 @@ urlpatterns = [
     path('register/', views.register_user, name='register'),
     path('login/', views.login_user, name='login'),
     path('profile/', views.profile, name='profile'),
-    path('projects/', views.display_projects, name='projects')
+    path('projects/', views.display_projects, name='projects'),
+    path("projects/<int:project_id>/", views.single_project, name='single_project'),
 ]
 
 if settings.DEBUG:

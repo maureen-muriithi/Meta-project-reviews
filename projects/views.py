@@ -81,7 +81,19 @@ def display_projects(request):
         "projects": projects,
     }
 
-    return render(request, 'projects/projects.html', args)
+    return render(request, 'projects/projects.html', args) 
+
+def single_project(request, project_id):
+    projects = Project.objects.filter(id=project_id).all()
+
+    args = {
+        "projects": projects,
+    }
+
+    return render(request, 'projects/single_project.html', args) 
+
+
+
 
 
   
