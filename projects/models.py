@@ -24,7 +24,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile' )
     name = models.CharField(max_length=140)
     bio = models.TextField()
-    image = models.ImageField(upload_to = 'images/', default='')
+    profile_picture = models.ImageField(upload_to = 'images/', default='')
     phone = models.CharField(max_length=10)
     email = models.EmailField()
 
