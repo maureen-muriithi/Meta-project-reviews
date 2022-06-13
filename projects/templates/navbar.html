@@ -14,7 +14,7 @@
               <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Home</a>
+                <a class="dropdown-item" href="{%url 'index' %}">Home</a>
                 {% if user.is_authenticated %}
 
                 <a class="dropdown-item" href="{%url 'profile' %}">Profile</a>
@@ -42,7 +42,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <form class="form-inline my-2 my-lg-0">
+    <form class="form-inline my-2 my-lg-0" action="/search" role="search" >
       <input class="form-control mr-sm-3 " type="search" placeholder="Search" aria-label="Search" style="border-color: lawngreen; margin: 4px;">
       <button class="btn btn-outline my-2 my-sm-0" type="submit" style="color: lawngreen; border-color: lawngreen;">Search</button>
     </form>

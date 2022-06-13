@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+{% block content %}
+
+{% if projects %}
+    <h2 class="text-center mt-5">Found {{ projects|length }} projects</h2>
+{% else %}
+    <h2 class="text-center"> {{message}} <br><br> Found 0 images for your search </h2>
+    <a class="d-block mx-auto" href="/projects">
+        <button class="btn btn-sm btn-info d-block mx-auto" style="background-color: lawngreen; color:white; font-size:20px; text-decoration: none;">Check out available projects</button>
+    </a>
+    {% endif %}
+
+    {% if projects %}
+    {% for project in projects %}
+<div class="container-fluid" style="background-color: rgba(0, 0, 0, 0.842); padding-top: 50px;">
+    <div class="container-1">
+        <div class="container-2" style="width: 80%; margin-left: 10%;" >
+            <img src="{{project.image.url}}" alt="Snow" style="width:100%;">
+            <div class="centered">{{ project.title }}</div>
+        </div>
+        <br>
+    </div>
+    <div class="container-details" style="margin-left:10%;">
+        <p style="color: lawngreen;" > Developer: <span style="font-weight: 500; color: white;" >{{ project.user.username }}</span></p>
+        <p style="color: lawngreen;"> Country:  <span style="font-weight: 500; color: white;">{{ project.country }}</span></p>
+        <p style="color: lawngreen;" > Description: <br> <span style="font-weight: 500; color: white;" >{{ project.description }}</span></p>
+        <p class="mr-5" style="font-size:larger">
+            <a href="{{project.user.profile.email}}"><i class="fa fa-envelope" style="color: lawngreen; margin-right: 5px;" ></i></a>
+            <a href="{{project.user.profile.phone}}"><i class="fa fa-phone" style="color: lawngreen ;" ></i></a>
+        </p>
+    </div>
+    <a class="inline text-center" href="{{project.project_link}}" style="margin-left: 45%;">
+        <li class="btn border shadow" style="font-size: 1.5rem; font-weight:800 ;" id="indexBtn2"> View Project </li>
+    </a>
+</div>
+  {% endfor %}
+  {% endif %}
+{% endblock content%}

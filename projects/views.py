@@ -83,6 +83,7 @@ def display_projects(request):
 
     return render(request, 'projects/projects.html', args) 
 
+@login_required(login_url='/accounts/login/')
 def single_project(request, project_id):
     projects = Project.objects.filter(id=project_id).all()
 
@@ -91,6 +92,25 @@ def single_project(request, project_id):
     }
 
     return render(request, 'projects/single_project.html', args) 
+
+@login_required(login_url='/accounts/login/')
+def search_project(request):
+    projects = Project.objects.all()
+    if 'search' in request.GET and request.GET['search']:
+        search_term = request.GET.get('search').lower()
+        projects = Project.search_project_name(search_term)
+        message = f'{search_term}'
+
+        args = {
+        "projects": projects,
+        "message": message
+    }
+
+        return render(request, 'search_project.html', args)
+    else:
+        message = 'Ooops! We currently do not have such a project'
+        return render(request, 'projects/search_project.html', {'message': message})
+
 
 
 
