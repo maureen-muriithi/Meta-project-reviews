@@ -53,12 +53,27 @@ class Review(models.Model):
     '''
     This a class model to enable the user to review and rate projects
     '''
-    design = models.IntegerField()
-    content = models.IntegerField()
-    creativity = models.IntegerField()
-    usability = models.IntegerField()
+    design = models.IntegerField(default=0, blank=True)
+    content = models.IntegerField(default=0, blank=True)
+    usability = models.IntegerField(default=0, blank=True)
+    average_score = models.IntegerField(default=0, blank=True)
     project = models.ForeignKey(Project, null=True, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.project.title} Rating'
+
+    def save_reviews(self):
+        self.save()
     
+    def delete_reviews(self):
+        self.delete()
+
+    @classmethod
+    def get_reviews(cls, id):
+        reviews = Review.objects.filter(project_id=id).all()
+        return reviews
+
 
 
 
