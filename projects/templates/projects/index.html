@@ -63,7 +63,9 @@
                   <img style="height: 150px; height: 300px;" src="{{project.image.url}}" alt="{{project.title}}" class="card-img">
                   <p id="overlay"class="text" style="justify-content: start; color: black; font-weight: 500; font-style: italic;"> 
                       From: <span style="color: lawngreen; font-weight: 500;">{{project.country}}</span> <br>
-                      Developed by: <span style="color: lawngreen; font-weight: 500;">{{project.user.username}}</span>
+                      Developed by: <span style="color: lawngreen; font-weight: 500;">{{project.user.username}}</span><br>
+                      Reviews: <span style="color: lawngreen; font-weight: 500;">{{project.user.username}}</span>
+
                   </p>
                       <a class="D-block mx-auto" style="justify-content: end;" href="{%url 'single_project' project.id %}">See More..</a>
               </div>
