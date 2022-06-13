@@ -75,6 +75,22 @@ def profile(request):
     }
     return render(request, 'projects/profile.html', args)
 
+@login_required(login_url='/accounts/login/')
+def update_profile(request,id):
+    user = User.objects.get(id=id)
+    profile = Profile.objects.get(user = user)
+    form = UpdateProfileForm(instance=profile)
+    if request.method == "POST":
+            form = UpdateProfileForm(request.POST,request.FILES,instance=profile)
+            if form.is_valid():  
+
+                profile = form.save(commit=False)
+                profile.save()
+                return redirect('profile') 
+
+    args = {"form":form}
+    return render(request, 'projects/update_profile.html', args)   
+
 
 @login_required(login_url='/accounts/login/')
 def display_projects(request):

@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<div class="container" style="margin-top:8%; background-color: black; padding-top: 100px;">
+<div class="container" style="margin-top:2%; background-color: black; padding-top: 50px;">
     <div class="content-section">
         <div class="media">
             <div class="container">
@@ -25,7 +25,10 @@
                         <div class="media-body" style="font-size: 30px ;">
                             {% if request.user is user %}  {% endif %}
                             <div class="account-heading" style="font-size: 40px;color: lawngreen; font-weight: 700;"><span class="mr-3  username">{{ user.username }}</span>
-                                <a class="btn btn-sm btn-outline-secondary mr-3" data-toggle="modal" data-target=".bd-example-modal-md"><strong style="font-size: 20px; color: lawngreen;">Edit Profile</strong></a>
+                                <!-- <a class="btn btn-sm btn-outline-secondary mr-3" data-toggle="modal" data-target=".bd-example-modal-md"><strong style="font-size: 20px; color: lawngreen;">Edit Profile</strong></a> -->
+                                <a href="{%url 'update_profile' user.id %}">
+                                    <button type="submit" class="btn btn-outline-secondary mr-3 " style="font-size:25px; color: lawngreen; font-weight: bolder;" > Update Profile</button>
+                                </a>
                                 <a class="mt-3" data-toggle="modal" data-target="#ModalCenter"><i class="fa fa-cog mt-3" id="cog"></i></a>
                             </div>
                             <br>
@@ -44,7 +47,7 @@
             <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <a class="D-block mx-auto" href="">Change Password</a>
+                        <a class="D-block mx-auto" href="/accounts/password/change">Change Password</a>
                         <hr>
                         <a class="D-block mx-auto" href="{% url 'logout' %}">Log Out</a>
                         <hr>
@@ -57,11 +60,10 @@
         <div class="modal fade bd-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-md ">
                 <div class="modal-content">
-                    <form action="" method="post" novalidate enctype="multipart/form-data" class="mr-4 mt-4 ml-4 mb-4">
                         {% csrf_token%}
-                         <!-- bootstrap_form profile_form  -->
+                        <a href="{%url 'update_profile' user.id %}">
                         <button type="submit" class="btn btn-outline btn-sm" style="background-color: lawngreen;" > Update Profile</button>
-                    </form>
+                        </a>
                 </div>
             </div>
         </div>
