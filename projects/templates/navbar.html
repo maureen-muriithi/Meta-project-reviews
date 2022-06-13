@@ -1,7 +1,13 @@
 
 {% load bootstrap4 %}
+{% load static%}
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/baseprojects.css' %}">
+
   
   <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     
@@ -13,7 +19,7 @@
             <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" style="border-color: lawngreen; color: lawngreen; border-left: 0px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="sr-only">Toggle Dropdown</span>
             </button> 
-            <div class="dropdown-menu">
+            <div class="dropdown-menu" style="background-color: rgba(0, 0, 0, 0.829); color:lawngreen">
                 <a class="dropdown-item" href="{%url 'index' %}">Home</a>
                 {% if user.is_authenticated %}
 
@@ -37,7 +43,7 @@
           </div>
     </div>
 
-    <a class="navbar-brand" style="margin-right: 25%; color: lawngreen;"  href="#">META PROJECTS REVIEWS</a>
+    <a class="navbar-brand" style="margin-right: 15%; color: lawngreen; font-family:'BioRhyme', serif; font-size: xx-large; "  href="#">META PROJECTS REVIEWS</a>
     <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

@@ -2,38 +2,39 @@
 {% load static %}
 {% load bootstrap4 %}
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="{% static 'css/baseprojects.css' %}">
 
 {% block content %}
-<div class="container" style="width: 100%; padding-top: 15px;">
+<div class="container-fluid" style="width: 100%; background-color: rgba(0, 0, 0, 0.822); color: white; padding-top: 15px;">
     <div class="row">
       <div class="col-md-1" style=" text-decoration: underline;" >English</div>
       <div class="col-md-2"></div>
       <div class="col-md-7">
-        <p>With Meta Projects, Get recognition for your projects' design, creativity and innovation</p>
-        <a href="{%url 'submit_project'%}" style="color: white;" > Add your Project, 
+        <p>With <span style="color: lawngreen; font-weight: 500; font-family: 'BioRhyme', serif; font-style: italic;">Meta Projects</span> , you get deserved recognition for your projects' design, creativity and innovation</p>
+        <a class="text-center" href="{%url 'submit_project'%}" style="color: white; margin-left: 20%;" > Add your Project   
             <button class="btn btn-outline" style="background-color: lawngreen;" type="submit">Submit Project</button>
         </a>      
     </div>
-      <div class="col-md-2 objects-align-center-horizontal" style="color: white;">
+    <div class="col-md-2 objects-align-center-horizontal" style="color: white;">
         <i class="fab fa-facebook mr-2" aria-hidden="true"></i>
         <i class="fab fa-instagram mr-2" aria-hidden="true" ></i>
         <i class="fa fa-envelope mr-2" aria-hidden="true" ></i>
         <i class="fa fa-phone" aria-hidden="true" ></i>
-      </div>
-    </div> 
-  </div>
+    </div>
+</div>
+<br><br>
 <div class="card-columns">
     {% for project in projects %}
 
         <div class="card" style="background-color: white;">
             <div class="card-body">
-                <img style="height: 150px; height: 300px;" src="{{project.image.url}}" alt="{{project.title}}" class="card-img">
+                <h4 class="text-center" ><span style="color: lawngreen; text-align: left; font-size: x-large; font-weight: 600; ">{{project.title}}</span><br></h4>
+                <img style="height: 150px; height: 300px;" src="{{project.image.url}}" alt="{{project.title}}" class="card-img"> <br>
                 <p id="overlay"class="text" style="justify-content: start; color: lawngreen;"> 
-                    <span style="color: lawngreen; text-align: left; font-size: x-large; font-weight: 600;">{{project.title}}</span><br>
-                    Country: <span style="color: black">{{project.country}}</span> <br>
-                    Developer: <span style="color: black">{{project.user.username}}</span>
+                    From: <span style="color: black">{{project.country}}</span> <br>
+                    Developed by: <span style="color: black">{{project.user.username}}</span>
                 </p>
                     <a class="D-block mx-auto" style="justify-content: end;" href="{%url 'single_project' project.id %}">See More..</a>
             </div>

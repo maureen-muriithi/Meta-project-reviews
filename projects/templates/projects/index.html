@@ -13,18 +13,22 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/baseprojects.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@700&display=swap" rel="stylesheet">
 
     {% bootstrap_css %}
       <link rel="stylesheet" href="{% static 'css/baseprojects.css' %}">
 </head>
+
   <body style="background-color: rgba(0, 0, 0, 0.842);">
     {% include 'navbar.html' %}
     <div class="container" style="width: 100%; padding-top: 15px;">
       <div class="row">
         <div class="col-md-1" style=" text-decoration: underline;" >English</div>
-        <div class="col-md-2"></div>
-        <div class="col-md-7">
-          <p>With Meta Projects, Get recognition for your projects' design, creativity and innovation</p>
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
+          <p>With <span style="color: lawngreen; font-weight: 500; font-family: 'BioRhyme', serif; font-style: italic;">Meta Projects</span> , you get deserved recognition for your projects' design, creativity and innovation</p>
         </div>
         <div class="col-md-2 objects-align-center-horizontal" style="color: white;">
           <i class="fab fa-facebook mr-2" aria-hidden="true"></i>
@@ -37,23 +41,29 @@
 
     <div class="container-fluid">
       <img src="../../../static/images/projbckg1.jpg" alt="Snow" style="width:100%;">
+      {% if user.is_authenticated %}
+      <a href="{% url 'submit_project'%}">
+        <li class=" bottom-left btn border shadow" style="font-size: 1.8rem; font-weight:800 ;" id="indexBtn">Get started</li>
+      </a>
+      {% else %}
       <a href="{% url 'register'%}">
         <li class=" bottom-left btn border shadow" style="font-size: 1.8rem; font-weight:800 ;" id="indexBtn">Get started</li>
       </a>
-      <h5 class="top-left" style="font-style: italic;">Site Today: {{date|date:"l d-F Y"}}</h5>
+      {%endif%}
+      <h6 class="top-left" style="font-style: italic; font-weight: 600;">Site Today: {{date|date:"l d-F Y"}}</h6>
     </div>
     <br>
-    <h3 class="text center">All Projects</h3>
+    <h3 class="text center text-white" style="margin-left: 45%; padding: 10px;">All Projects</h3>
     <div class="card-columns">
       {% for project in projects %}
   
           <div class="card" style="background-color: white;">
-              <div class="card-body">
+              <div class="card-body" >
+                <h4 class="text-center" ><span style="color: lawngreen; text-align: left; font-size: x-large; font-weight: 600; ">{{project.title}}</span><br></h4>
                   <img style="height: 150px; height: 300px;" src="{{project.image.url}}" alt="{{project.title}}" class="card-img">
                   <p id="overlay"class="text" style="justify-content: start; color: black; font-weight: 500; font-style: italic;"> 
-                      <span style="color: lawngreen; text-align: left; font-size: x-large; font-weight: 600;">{{project.title}}</span><br>
                       From: <span style="color: lawngreen; font-weight: 500;">{{project.country}}</span> <br>
-                      Developerd by: <span style="color: lawngreen; font-weight: 500;">{{project.user.username}}</span>
+                      Developed by: <span style="color: lawngreen; font-weight: 500;">{{project.user.username}}</span>
                   </p>
                       <a class="D-block mx-auto" style="justify-content: end;" href="{%url 'single_project' project.id %}">See More..</a>
               </div>
@@ -65,8 +75,12 @@
 
     <!-- Optional JavaScript --> 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
+    {% block scripts %}
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{%static 'js/projects.js'%}"></script>
+{% endblock %}
   </body>
 </html>
