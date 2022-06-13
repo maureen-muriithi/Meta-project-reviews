@@ -23,17 +23,18 @@
 
   <body style="background-color: rgba(0, 0, 0, 0.842);">
     {% include 'navbar.html' %}
-    <div class="container" style="width: 100%; padding-top: 15px;">
+    <div class="container-fluid" style="width: 100%; max-height: fit-content; padding-top: 20px; color:white;">
       <div class="row">
         <div class="col-md-1" style=" text-decoration: underline;" >English</div>
-        <div class="col-md-1"></div>
-        <div class="col-md-8">
+        <div class="col-md-2"></div>
+        <div class="col-md-7">
           <p>With <span style="color: lawngreen; font-weight: 500; font-family: 'BioRhyme', serif; font-style: italic;">Meta Projects</span> , you get deserved recognition for your projects' design, creativity and innovation</p>
         </div>
-        <div class="col-md-2 objects-align-center-horizontal" style="color: white;">
-          <i class="fab fa-facebook mr-2" aria-hidden="true"></i>
-          <i class="fab fa-instagram mr-2" aria-hidden="true" ></i>
-          <i class="fa fa-envelope mr-2" aria-hidden="true" ></i>
+        <div class="col-md-1"></div>
+        <div class="col-md-1 objects-align-center-horizontal" style="color: white;">
+          <i class="fab fa-facebook mr-1" aria-hidden="true"></i>
+          <i class="fab fa-instagram mr-1" aria-hidden="true" ></i>
+          <i class="fa fa-envelope mr-1" aria-hidden="true" ></i>
           <i class="fa fa-phone" aria-hidden="true" ></i>
         </div>
       </div> 
@@ -62,9 +63,9 @@
                 <h4 class="text-center" ><span style="color: lawngreen; text-align: left; font-size: x-large; font-weight: 600; ">{{project.title}}</span><br></h4>
                   <img style="height: 150px; height: 300px;" src="{{project.image.url}}" alt="{{project.title}}" class="card-img">
                   <p id="overlay"class="text" style="justify-content: start; color: black; font-weight: 500; font-style: italic;"> 
-                      From: <span style="color: lawngreen; font-weight: 500;">{{project.country}}</span> <br>
-                      Developed by: <span style="color: lawngreen; font-weight: 500;">{{project.user.username}}</span><br>
-                      Reviews: <span style="color: lawngreen; font-weight: 500;">{{project.user.username}}</span>
+                    Developed by: <span style="color: lawngreen; font-weight: 500;">{{project.user.username}}</span><br> 
+                    From: <span style="color: lawngreen; font-weight: 500;">{{project.country}}</span> <br>
+                    Reviews: <span style="color: lawngreen; font-weight: 500;">{{project.user.username}}</span>
 
                   </p>
                       <a class="D-block mx-auto" style="justify-content: end;" href="{%url 'single_project' project.id %}">See More..</a>

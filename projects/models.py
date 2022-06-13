@@ -58,6 +58,7 @@ class Review(models.Model):
     creativity = models.IntegerField()
     usability = models.IntegerField()
     project = models.ForeignKey(Project, null=True, on_delete=models.CASCADE)
+    
 
 
 
