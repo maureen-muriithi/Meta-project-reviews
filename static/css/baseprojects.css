@@ -58,3 +58,15 @@
   .dropdown-item{
     color: lawngreen;
   }
+
+  .dropdown-container {
+    display: none;
+    background-color: #262626;
+    padding-left: 8px;
+    color: lawngreen;
+  }
+  
+  .fa-caret-down {
+    float: right;
+    padding-right: 8px;
+  }
