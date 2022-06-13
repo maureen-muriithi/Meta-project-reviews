@@ -27,30 +27,47 @@
         <p style="color: lawngreen;" > Developer: <span style="font-weight: 500; color: white;" >{{ project.user.username }}</span></p>
         <p style="color: lawngreen;"> Country:  <span style="font-weight: 500; color: white;">{{ project.country }}</span></p>
         <p style="color: lawngreen;" > Description: <br> <span style="font-weight: 500; color: white;" >{{ project.description }}</span></p>
-        <p class="mr-5" style="font-size:larger">
-            <a href="{{project.user.profile.email}}"><i class="fa fa-envelope" style="color: lawngreen; margin-right: 5px;" ></i></a>
-            <a href="{{project.user.profile.phone}}"><i class="fa fa-phone" style="color: lawngreen ;" ></i></a>
+        <p class="mr-5">
+            <a href="{{project.user.profile.email}}"><i class="fa fa-envelope" style="color: lawngreen; margin-right: 5px; font-size:larger" ></i></a>
+            <a href="{{project.user.profile.phone}}"><i class="fa fa-phone" style="color: lawngreen ; font-size:larger" ></i></a>
         </p>
     </div>
     <div class="row" style="padding-bottom: 50px;">
-        <div class="col-md-3"></div>
+        <div class="col-md-5"></div>
         <div class="col-md-2">
-            <a class="inline text-center" href="{{project.project_link}}" style="margin-left: 45%;">
+            <a class="inline text-center" href="{{project.project_link}}" style="margin-left: 15%;">
                 <li class="btn border shadow" style="font-size: 1.5rem; font-weight:800 ;" id="indexBtn2"> View Project </li>
             </a> 
-        </div>
-        <div class="col-md-2">
-            <a class="inline text-center" href="{{project.project_link}}" style="margin-left: 45%;">
-                <li class="btn border shadow" style="font-size: 1.5rem; font-weight:800 ;" id="indexBtn2"> Vote For Project </li>
-            </a>
         </div>
         <div class="col-md-5"></div>
     </div>
 
-    <div class="container">
-        <form action="">
-            
+    <div class="container my-3 col-6">
+        <form  action="">
+            {% csrf_token %}
+        <div class="h2 text-center">Ratings</div>
+        <br>
+        <div class="container shadow-2 my-1 border-bottom border-success">
+            <label for="cus4tomRange3" class="form-label">Design</label>
+            <input type="text" class="form-range" min="0" max="10" id="Design">
+        </div>
+        <br>
+        <div class="container shadow-2 my-1 border-bottom border-success">
+            <label for="cus4tomRange3" class="form-label">Usability</label>
+            <input type="text" class="form-range" min="0" max="10" id="Usability">
+        </div>
+        <br>
+        <div class="container shadow-2 my-1 border-bottom border-success">
+            <label for="customRange3" class="form-label">Content</label>
+            <input type="text" class="form-range" min="0" max="10" id="Content">
+        </div>
+        <br>
+        <div class="form-group mx-auto my-3 d-flex justify-content-center">
+            <button class="btn  btn-lg btn-block fw-bold" type="submit" style="background-color: lawngreen;" >Rate Project</button
+            >
+        </div>
         </form>
+        <br>
     </div>
 
 </div>
