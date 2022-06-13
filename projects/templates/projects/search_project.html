@@ -18,12 +18,19 @@
 
     {% if projects %}
     {% for project in projects %}
-<div class="container-fluid" style="background-color: rgba(0, 0, 0, 0.842); padding-top: 50px;">
-    <div class="container-1">
-        <div class="container-2" style="width: 80%; margin-left: 10%;" >
-            <img src="{{project.image.url}}" alt="Snow" style="width:100%;">
-            <div class="centered">{{ project.title }}</div>
-        </div>
+    <div class="container-fluid" style="background-color: rgba(0, 0, 0, 0.842); padding-top: 50px;">
+        <div class="container-1">
+            {% if user.profile.profile_picture%}
+            <img class="rounded-circle" src="{{ user.profile.profile_picture.url }}" style="width: 60px; height: 60px; margin-left: 10%; border: 2px solid lawngreen; "> 
+            {% else %}
+            <img class="rounded-circle" src="../../../static/images/profileavatar.jpg" style="width: 60px; height: 60px; margin-left: 10%; border: 2px solid lawngreen;"> 
+            {%endif%}
+            <span class="text-center" style="font-size: xx-large; font-weight: 500; color: lawngreen; margin-left: 22%;">{{ project.title }}</span>
+    
+            <br>
+            <div class="container-2" style="width: 80%; margin-left: 10%; padding-top: 20px;" >
+                <img src="{{project.image.url}}" alt="Snow" style="width:100%;">
+            </div>
         <br>
     </div>
     <div class="container-details" style="margin-left:10%;">

@@ -17,11 +17,12 @@
     width: 200px;
     border-radius: 25px;
     height: 55px;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 900;
     text-align: center;
     align-items: center;
-    padding-bottom: 5px;
+    padding: 5px;
+    padding-top: 10px;
   }
   #indexBtn2{
     background-color: lawngreen;
