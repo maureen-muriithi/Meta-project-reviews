@@ -9,6 +9,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from .forms import RegisterForm, NewProjectForm, UpdateProfileForm
 from .email import send_welcome_email
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import ProfileSerializer, ProjectSerializer
 
 
 # Create your views here.
@@ -154,6 +157,19 @@ def submit_project(request):
 def not_found(request):
     message = 'Sorry. We have nothing at the moment. Please check again later'
     return render(request, 'projects/notfound.html', {"message":message})
+
+class ProjectViewItems(APIView):
+    def get(self, request, format=None):
+        all_projects = Project.objects.all()
+        serializers = ProjectSerializer(all_projects, many=True)
+        return Response(serializers.data)
+    
+    
+class ProfileViewItems(APIView):
+    def get(self, request, format=None):
+        all_profiles = Profile.objects.all()
+        serializers = ProfileSerializer(all_profiles, many=True)
+        return Response(serializers.data)
 
 
 
