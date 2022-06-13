@@ -111,6 +111,12 @@ def search_project(request):
         message = 'Ooops! We currently do not have such a project'
         return render(request, 'projects/search_project.html', {'message': message})
 
+@login_required(login_url='/accounts/login/')
+def not_found(request):
+    message = 'Sorry. We have nothing at the moment. Please check again later'
+    return render(request, 'projects/notfound.html', {"message":message})
+
+
 
 
 
