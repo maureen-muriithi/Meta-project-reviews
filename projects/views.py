@@ -12,6 +12,8 @@ from .email import send_welcome_email
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializer import ProfileSerializer, ProjectSerializer
+from .permissions import IsAdminOrReadOnly
+
 
 
 # Create your views here.
@@ -159,6 +161,7 @@ def not_found(request):
     return render(request, 'projects/notfound.html', {"message":message})
 
 class ProjectViewItems(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
     def get(self, request, format=None):
         all_projects = Project.objects.all()
         serializers = ProjectSerializer(all_projects, many=True)
@@ -166,6 +169,7 @@ class ProjectViewItems(APIView):
     
     
 class ProfileViewItems(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
     def get(self, request, format=None):
         all_profiles = Profile.objects.all()
         serializers = ProfileSerializer(all_profiles, many=True)
