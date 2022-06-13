@@ -23,7 +23,6 @@ def index(request):
         "projects": projects,
         "users": users,
     }
-
     return render(request, 'projects/index.html', args)
 
 
@@ -73,6 +72,7 @@ def profile(request):
     }
     return render(request, 'projects/profile.html', args)
 
+
 @login_required(login_url='/accounts/login/')
 def display_projects(request):
     projects = Project.objects.all()
@@ -80,8 +80,8 @@ def display_projects(request):
     args = {
         "projects": projects,
     }
-
     return render(request, 'projects/projects.html', args) 
+
 
 @login_required(login_url='/accounts/login/')
 def single_project(request, project_id):
@@ -90,8 +90,8 @@ def single_project(request, project_id):
     args = {
         "projects": projects,
     }
-
     return render(request, 'projects/single_project.html', args) 
+
 
 @login_required(login_url='/accounts/login/')
 def search_project(request):
@@ -110,6 +110,26 @@ def search_project(request):
     else:
         message = 'Ooops! We currently do not have such a project'
         return render(request, 'projects/search_project.html', {'message': message})
+
+
+@login_required(login_url='/accounts/login/')
+def submit_project(request):
+    user = request.user
+    if request.method == "POST":
+        form = NewProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit = False)
+            post.user = user
+            post.save()
+            return redirect("index")
+    else:
+        form = NewProjectForm()
+        args = {
+          "form": form,  
+        }
+
+    return render(request, "projects/new_project.html", args)
+
 
 @login_required(login_url='/accounts/login/')
 def not_found(request):

@@ -6,6 +6,24 @@
 <link rel="stylesheet" href="{% static 'css/baseprojects.css' %}">
 
 {% block content %}
+<div class="container" style="width: 100%; padding-top: 15px;">
+    <div class="row">
+      <div class="col-md-1" style=" text-decoration: underline;" >English</div>
+      <div class="col-md-2"></div>
+      <div class="col-md-7">
+        <p>With Meta Projects, Get recognition for your projects' design, creativity and innovation</p>
+        <a href="{%url 'submit_project'%}" style="color: white;" > Add your Project, 
+            <button class="btn btn-outline" style="background-color: lawngreen;" type="submit">Submit Project</button>
+        </a>      
+    </div>
+      <div class="col-md-2 objects-align-center-horizontal" style="color: white;">
+        <i class="fab fa-facebook mr-2" aria-hidden="true"></i>
+        <i class="fab fa-instagram mr-2" aria-hidden="true" ></i>
+        <i class="fa fa-envelope mr-2" aria-hidden="true" ></i>
+        <i class="fa fa-phone" aria-hidden="true" ></i>
+      </div>
+    </div> 
+  </div>
 <div class="card-columns">
     {% for project in projects %}
 

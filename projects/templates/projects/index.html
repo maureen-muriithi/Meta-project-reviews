@@ -4,20 +4,36 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Meta Projoct</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/baseprojects.css' %}">
 
     {% bootstrap_css %}
       <link rel="stylesheet" href="{% static 'css/baseprojects.css' %}">
 </head>
-  <body>
+  <body style="background-color: rgba(0, 0, 0, 0.842);">
     {% include 'navbar.html' %}
+    <div class="container" style="width: 100%; padding-top: 15px;">
+      <div class="row">
+        <div class="col-md-1" style=" text-decoration: underline;" >English</div>
+        <div class="col-md-2"></div>
+        <div class="col-md-7">
+          <p>With Meta Projects, Get recognition for your projects' design, creativity and innovation</p>
+        </div>
+        <div class="col-md-2 objects-align-center-horizontal" style="color: white;">
+          <i class="fab fa-facebook mr-2" aria-hidden="true"></i>
+          <i class="fab fa-instagram mr-2" aria-hidden="true" ></i>
+          <i class="fa fa-envelope mr-2" aria-hidden="true" ></i>
+          <i class="fa fa-phone" aria-hidden="true" ></i>
+        </div>
+      </div> 
+    </div>
 
     <div class="container-fluid">
       <img src="../../../static/images/projbckg1.jpg" alt="Snow" style="width:100%;">
@@ -25,14 +41,25 @@
         <li class=" bottom-left btn border shadow" style="font-size: 1.8rem; font-weight:800 ;" id="indexBtn">Get started</li>
       </a>
       <h5 class="top-left" style="font-style: italic;">Site Today: {{date|date:"l d-F Y"}}</h5>
-      <div class="top-right">Top Right</div>
-      <div class="centered">Centered</div>
     </div>
-
-    {% for project in projects %}
-    <h1>{{ project.title }}</h1>
-    <img src="{{ project.image.url}}" alt="" style="width: 400px; height: 400px; ">
-    {% endfor %}
+    <br>
+    <h3 class="text center">All Projects</h3>
+    <div class="card-columns">
+      {% for project in projects %}
+  
+          <div class="card" style="background-color: white;">
+              <div class="card-body">
+                  <img style="height: 150px; height: 300px;" src="{{project.image.url}}" alt="{{project.title}}" class="card-img">
+                  <p id="overlay"class="text" style="justify-content: start; color: black; font-weight: 500; font-style: italic;"> 
+                      <span style="color: lawngreen; text-align: left; font-size: x-large; font-weight: 600;">{{project.title}}</span><br>
+                      From: <span style="color: lawngreen; font-weight: 500;">{{project.country}}</span> <br>
+                      Developerd by: <span style="color: lawngreen; font-weight: 500;">{{project.user.username}}</span>
+                  </p>
+                      <a class="D-block mx-auto" style="justify-content: end;" href="{%url 'single_project' project.id %}">See More..</a>
+              </div>
+          </div>
+      {% endfor %}
+  </div>
 
 
 
