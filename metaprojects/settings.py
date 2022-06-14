@@ -49,8 +49,8 @@ INSTALLED_APPS = [
     'bootstrap4',
     'rest_framework',
     'rest_framework.authtoken',
-    'tinymce'
-    'crispy_forms'
+    'tinymce',
+    'crispy_forms',
 ]
 
 CRISPY_TEMPLATE_PACK = 'uni_form'
