@@ -72,10 +72,17 @@
         <br>
     </div>
 
-    <div class="container">
+    <div class="container" style="padding-bottom: 20px;">
         {% for review in reviews %}
-        <h1>{{review.user.username}}</h1>
-        <h1>{{review.average_score}}</h1>
+        <h2>{{ review.project.title}} Reviews </h2>
+        <br>
+        <div class="row">
+            <div class="col-md-3"> <h4> <span style="color: lawngreen;">Reviewer</span>: {{review.user.username}}</h4> </div>
+            <div class="col-md-2"><h5><span style="color: lawngreen;">Design Rating</span>: {{review.design }}</h5></div>
+            <div class="col-md-3"><h5> <span style="color: lawngreen;">Usability Rating</span>: {{review.usability }}</h5></div>
+            <div class="col-md-2"><h5><span style="color: lawngreen;">Content Rating</span>: {{review.content }}</h5></div>
+            <div class="col-md-2"><h5> <span style="color: lawngreen;">Average Rating</span>: {{review.average_score }}</h5></div>
+        </div>
         {% empty %}
         <h1>No any reviews/ratings yet</h1>
         {%endfor%}

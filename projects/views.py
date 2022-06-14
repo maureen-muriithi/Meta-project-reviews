@@ -158,9 +158,9 @@ def submit_project(request):
     return render(request, "projects/new_project.html", args)
 
 @login_required(login_url='/accounts/login/')
-def review_project(request,project_id):
+def review_project(request,id):
     if request.method == 'POST':
-        project = Project.objects.filter(id=project_id).all()
+        project = Project.objects.get(id=id)
         current_user = request.user
         design = request.POST['design']
         content = request.POST['content']
@@ -174,11 +174,11 @@ def review_project(request,project_id):
             content=content,
             average_score=round((float(design)+float(usability)+float(content))/3,2),
         )
-        return render(request,'project_details.html',{"project":project})
+        return render(request,'projects/single_project.html',{"project":project})
     else:
-        project = Project.objects.get(id=project_id)
+        project = Project.objects.get(id=id)
 
-        return render(request,'project_details.html',{"project":project})
+        return render(request,'projects/single_project.html',{"project":project})
 
 
 @login_required(login_url='/accounts/login/')
