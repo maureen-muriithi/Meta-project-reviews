@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 import datetime
+from cloudinary.models import CloudinaryField
+
 
 # Create your models here.
 class Project(models.Model):
@@ -11,7 +13,7 @@ class Project(models.Model):
     '''
     title = models.CharField(max_length=140)
     user = models.ForeignKey(User, null=True, blank=True, related_name='projects', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to = 'projects/', default='')
+    image = CloudinaryField('image')
     description = models.TextField()
     country = models.CharField(max_length=140)
     project_link = models.URLField(max_length=2048)
@@ -43,7 +45,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile' )
     name = models.CharField(max_length=140)
     bio = models.TextField(null=True, default="This is my fine Bio", blank=True)
-    profile_picture = models.ImageField(upload_to = 'images/', default='')
+    profile_picture = CloudinaryField('image')
     phone = models.CharField(max_length=10)
     email = models.EmailField()
 
@@ -54,7 +56,6 @@ class Profile(models.Model):
     def create_profile(sender, instance, created, **kwargs):
         if created:
             Profile.objects.create(user=instance)
-
 
     @receiver(post_save, sender=User)
     def save_profile(sender, instance, **kwargs):

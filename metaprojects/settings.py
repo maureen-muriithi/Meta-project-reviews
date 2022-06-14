@@ -15,6 +15,9 @@ import os
 from decouple import config,Csv
 import django_heroku
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -51,6 +54,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'tinymce',
     'crispy_forms',
+    'cloudinary',
 ]
 
 CRISPY_TEMPLATE_PACK = 'uni_form'
@@ -165,6 +169,20 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     )
 }
+
+cloudinary.config( 
+  cloud_name = "moh22", 
+  api_key = "852318218342626", 
+  api_secret = "nnZTLzAFof7waDRoxdgouerwc04", 
+)
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': "moh22", 
+    'API_KEY': "852318218342626",  
+    'API_SECRET': "nnZTLzAFof7waDRoxdgouerwc04", 
+}
+
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())

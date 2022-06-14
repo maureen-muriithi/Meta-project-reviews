@@ -155,6 +155,9 @@ def submit_project(request):
 
 @login_required(login_url='/accounts/login/')
 def review_project(request,id):
+    projects = Project.objects.filter(id=id).all()
+    reviews = Review.objects.filter(project_id = id).all()
+
     if request.method == 'POST':
         project = Project.objects.get(id=id)
         current_user = request.user
@@ -173,7 +176,7 @@ def review_project(request,id):
         )
 
         
-        return render(request,'projects/single_project.html',{"project":project})
+        return render(request,'projects/single_project.html',{"project":project, "projects":projects, "reviews": reviews})
 
     else:
         project = Project.objects.get(id=id)

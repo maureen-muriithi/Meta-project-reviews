@@ -43,7 +43,7 @@
     </div>
 
     <div class="container my-3 col-6">
-        <form  action="{%url 'single_project' project.id %}" method="post">
+        <form  action="{%url 'review_project' project.id%}" method="post">
             {% csrf_token %}
         <div class="h2 text-center">Ratings
             <p style="font-size: medium;">(Submit your ratings on a scale of 1-10)</p>
@@ -78,16 +78,15 @@
         <br>
         <div class="row">
             <div class="col-md-3"> <h4> <span style="color: lawngreen;">Reviewer</span>: {{review.user.username}}</h4> </div>
-            <div class="col-md-2"><h5><span style="color: lawngreen;">Design Rating</span>: {{review.design }}</h5></div>
-            <div class="col-md-3"><h5> <span style="color: lawngreen;">Usability Rating</span>: {{review.usability }}</h5></div>
-            <div class="col-md-2"><h5><span style="color: lawngreen;">Content Rating</span>: {{review.content }}</h5></div>
-            <div class="col-md-2"><h5> <span style="color: lawngreen;">Average Rating</span>: {{review.average_score }}</h5></div>
+            <div class="col-md-2"><h6><span style="color: lawngreen;">Design Rating</span>: {{review.design}}</h6></div>
+            <div class="col-md-3"><h6> <span style="color: lawngreen;">Usability Rating</span>: {{review.usability }}</h6></div>
+            <div class="col-md-2"><h6><span style="color: lawngreen;">Content Rating</span>: {{review.content }}</h6></div>
+            <div class="col-md-2"><h6> <span style="color: lawngreen;">Average Rating</span>: {{review.average_score }}</h6></div>
         </div>
         {% empty %}
         <h1>No any reviews/ratings yet</h1>
         {%endfor%}
     </div>
-
+{% endfor %}
 </div>
-  {% endfor %}
 {% endblock content%}
