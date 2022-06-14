@@ -81,7 +81,7 @@ def profile(request):
 @login_required(login_url='/accounts/login/')
 def update_profile(request,id):
     user = User.objects.get(id=id)
-    profile = Profile.objects.get(user = user)
+    profile = Profile.objects.filter(user = user)
     form = UpdateProfileForm(instance=profile)
     if request.method == "POST":
             form = UpdateProfileForm(request.POST,request.FILES,instance=profile)
