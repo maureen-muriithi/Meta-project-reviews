@@ -1,4 +1,4 @@
-from .models import Project, Profile
+from .models import Project, Profile, Review
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 import datetime as dt
@@ -111,9 +111,11 @@ def display_projects(request):
 @login_required(login_url='/accounts/login/')
 def single_project(request, project_id):
     projects = Project.objects.filter(id=project_id).all()
+    reviews =  Review.objects.filter(id=project_id)
 
     args = {
         "projects": projects,
+        "reviews": reviews,
     }
     return render(request, 'projects/single_project.html', args) 
 
@@ -154,6 +156,29 @@ def submit_project(request):
         }
 
     return render(request, "projects/new_project.html", args)
+
+@login_required(login_url='/accounts/login/')
+def review_project(request,project_id):
+    if request.method == 'POST':
+        project = Project.objects.filter(id=project_id).all()
+        current_user = request.user
+        design = request.POST['design']
+        content = request.POST['content']
+        usability= request.POST['usability']
+
+        Review.objects.create(
+            project=project,
+            user=current_user,
+            design =design,
+            usability=usability,
+            content=content,
+            average_score=round((float(design)+float(usability)+float(content))/3,2),
+        )
+        return render(request,'project_details.html',{"project":project})
+    else:
+        project = Project.objects.get(id=project_id)
+
+        return render(request,'project_details.html',{"project":project})
 
 
 @login_required(login_url='/accounts/login/')

@@ -43,23 +43,25 @@
     </div>
 
     <div class="container my-3 col-6">
-        <form  action="">
+        <form  action="{%url 'single_project' project.id %}" method="post">
             {% csrf_token %}
-        <div class="h2 text-center">Ratings</div>
-        <br>
-        <div class="container shadow-2 my-1 border-bottom border-success">
-            <label for="cus4tomRange3" class="form-label">Design</label>
-            <input type="text" class="form-input" min="0" max="10" id="Design">
+        <div class="h2 text-center">Ratings
+            <p style="font-size: medium;">(Submit your ratings on a scale of 1-10)</p>
         </div>
         <br>
         <div class="container shadow-2 my-1 border-bottom border-success">
-            <label for="cus4tomRange3" class="form-label">Usability</label>
-            <input type="text" class="form-input" min="0" max="10" id="Usability">
+            <label for="design" class="form-label">Design</label>
+            <input type="number" class="form-input" min="0" max="10" name="design" id="design">
         </div>
         <br>
         <div class="container shadow-2 my-1 border-bottom border-success">
-            <label for="customRange3" class="form-label">Content</label>
-            <input type="text" class="form-input" min="0" max="10" id="Content">
+            <label for="usability" class="form-label">Usability</label>
+            <input type="number" class="form-input" min="0" max="10" name="usability" id="usability">
+        </div>
+        <br>
+        <div class="container shadow-2 my-1 border-bottom border-success">
+            <label for="content" class="form-label">Content</label>
+            <input type="number" class="form-input" min="0" max="10" name="content" id="content">
         </div>
         <br>
         <div class="form-group mx-auto my-3 d-flex justify-content-center">
@@ -68,6 +70,15 @@
         </div>
         </form>
         <br>
+    </div>
+
+    <div class="container">
+        {% for review in reviews %}
+        <h1>{{review.user.username}}</h1>
+        <h1>{{review.average_score}}</h1>
+        {% empty %}
+        <h1>No any reviews/ratings yet</h1>
+        {%endfor%}
     </div>
 
 </div>
