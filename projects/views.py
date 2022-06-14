@@ -37,12 +37,9 @@ def register_user(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            email = form.cleaned_data['email']
-            send_welcome_email(user,email)
-
             login(request, user)
             messages.success(request, "Registration successful." )
-            return redirect("/login")
+        return redirect("/login")
     messages.error(request, "Unsuccessful registration. Invalid information.")
     form = RegisterForm()
     return render(request=request, template_name="django_registration/registration_form.html", context= {'form': form})
