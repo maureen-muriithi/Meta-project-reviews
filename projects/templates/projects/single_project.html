@@ -73,8 +73,8 @@
     </div>
 
     <div class="container" style="padding-bottom: 20px;">
-        {% for review in reviews %}
-        <h2>{{ review.project.title}} Reviews </h2>
+        {% for review in reviews.all %}
+        <h2> {{ review.project.title}} Reviews </h2>
         <br>
         <div class="row">
             <div class="col-md-3"> <h4> <span style="color: lawngreen;">Reviewer</span>: {{review.user.username}}</h4> </div>

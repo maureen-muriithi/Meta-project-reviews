@@ -111,7 +111,7 @@ def display_projects(request):
 @login_required(login_url='/accounts/login/')
 def single_project(request, project_id):
     projects = Project.objects.filter(id=project_id).all()
-    reviews =  Review.objects.filter(id=project_id)
+    reviews = Review.objects.filter(project_id = project_id).all()
 
     args = {
         "projects": projects,
@@ -132,8 +132,7 @@ def search_project(request):
         "projects": projects,
         "message": message
     }
-
-        return render(request, 'search_project.html', args)
+        return render(request, 'projects/search_project.html', args)
     else:
         message = 'Ooops! We currently do not have such a project'
         return render(request, 'projects/search_project.html', {'message': message})
@@ -162,6 +161,7 @@ def review_project(request,id):
     if request.method == 'POST':
         project = Project.objects.get(id=id)
         current_user = request.user
+
         design = request.POST['design']
         content = request.POST['content']
         usability= request.POST['usability']
@@ -169,12 +169,15 @@ def review_project(request,id):
         Review.objects.create(
             project=project,
             user=current_user,
-            design =design,
+            design=design,
             usability=usability,
             content=content,
             average_score=round((float(design)+float(usability)+float(content))/3,2),
         )
+
+        
         return render(request,'projects/single_project.html',{"project":project})
+
     else:
         project = Project.objects.get(id=id)
 
