@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'tinymce',
     'crispy_forms',
+    'cloudinary_storage',
     'cloudinary',
 ]
 
