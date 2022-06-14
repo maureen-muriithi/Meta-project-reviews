@@ -16,7 +16,7 @@ urlpatterns = [
     path('reviewproject/<int:id>', views.review_project, name='review_project'),
     path('notfound/', views.not_found, name='not_found'),
     path('api/profiles/', views.ProfileViewItems.as_view(), name='api_profile'),
-    path('api/projects/', views.ProjectViewItems.as_view())
+    path('api/projects/', views.ProjectViewItems.as_view(), name='api_projects'),
 
 ]
 

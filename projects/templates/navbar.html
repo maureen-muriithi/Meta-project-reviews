@@ -34,7 +34,7 @@
                 </button> 
                 <div class="dropdown-menu" style="background-color: rgba(0, 0, 0, 0.829); color:lawngreen">
                   <a class="dropdown-item" href="{%url 'api_profile'%}">Profile Api</a>
-                  <a class="dropdown-item" href="api/projects">Projects Api</a>
+                  <a class="dropdown-item" href="{%url 'api_projects'%}">Projects Api</a>
                 </div>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/logout">Logout</a>
@@ -54,7 +54,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <form class="form-inline my-2 my-lg-0" action="/search" role="search" >
+    <form class="form-inline my-2 my-lg-0" action="{%url 'search'%}" role="search" >
       <input class="form-control mr-sm-3 " type="search" placeholder="Search" aria-label="Search" style="border-color: lawngreen; margin: 4px;">
       <button class="btn btn-outline my-2 my-sm-0" type="submit" style="color: lawngreen; border-color: lawngreen;">Search</button>
     </form>
