@@ -61,7 +61,7 @@ def login_user(request):
           messages.error(request,"Invalid username or password.")
   form = AuthenticationForm()
 
-  return render(request=request, template_name="django_registration/login.html", context={"form":form})
+  return render(request=request, template_name="registration/login.html", context={"form":form})
 
 
 
