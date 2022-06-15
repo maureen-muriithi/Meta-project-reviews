@@ -14,8 +14,8 @@
                 <div class="row">
                     <!-- <div class="col-md-1"></div> -->
                     <div class="col-md-3 mr-5">
-                        {% if user.profile.profile_picture%}
-                        <img class="rounded-circle account-img" src="{{ user.profile.profile_picture.url }}" style="width: 400px; height: 400px;">
+                        {% if request.user.profile.profile_picture%}
+                        <img class="rounded-circle account-img" src="{{ request.user.profile.profile_picture.url }}" style="width: 400px; height: 400px;">
                         {% else %}
                         <img class="rounded-circle account-img" src="../../../static/images/profileavatar.jpg" style="width: 400px; height: 400px;">
                         {%endif%}
