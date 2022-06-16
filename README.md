@@ -26,13 +26,13 @@ The application will allow a user to post a project he/she has created and get i
 
 #### Screenshots
 Home
-[![Screenshot-from-2022-06-07-04-41-08.png](https://i.postimg.cc/N0jRLdSQ/Screenshot-from-2022-06-07-04-41-08.png)](https://postimg.cc/21g1K7Ct)
+[![Screenshot-from-2022-06-15-01-19-34.png](https://i.postimg.cc/tCf1bnf7/Screenshot-from-2022-06-15-01-19-34.png)](https://postimg.cc/WhGp6zsP)
 
 Profile
-[![Screenshot-from-2022-06-07-04-40-22.png](https://i.postimg.cc/Nj7xK90k/Screenshot-from-2022-06-07-04-40-22.png)](https://postimg.cc/v4Tnjmf4)
+[![Screenshot-from-2022-06-15-04-05-03.png](https://i.postimg.cc/y8kFXHq3/Screenshot-from-2022-06-15-04-05-03.png)](https://postimg.cc/5XWYbD2f)
 
-Project
-[![Screenshot-from-2022-06-07-04-41-26.png](https://i.postimg.cc/yx4JhjQg/Screenshot-from-2022-06-07-04-41-26.png)](https://postimg.cc/7G9Yw3yw)
+Forms/Update Profile
+[![Screenshot-from-2022-06-16-00-57-44.png](https://i.postimg.cc/L4DCx2Wx/Screenshot-from-2022-06-16-00-57-44.png)](https://postimg.cc/t71NTQp6)
 
 
 #### Technologies Used

@@ -8,9 +8,9 @@
 {% block content %}
 
 {% if projects %}
-    <h2 class="text-center mt-5 text-white ">Found {{ projects|length }} projects</h2>
+    <h2 class="text-center mt-5 text-white ">Found {{ projects|length }} project for {{message}} </h2>
 {% else %}
-    <h2 class="text-center text-white "> {{message}} <br><br> Found 0 images for your search </h2>
+    <h2 class="text-center text-white "> <br><br> Found 0 images for {{message}} search </h2>
     <a class="d-block mx-auto" href="{% url 'projects'  %}">
         <button class="btn btn-sm btn-info d-block mx-auto" style="background-color: lawngreen; color:white; font-size:20px; text-decoration: none;">Check out available projects</button>
     </a>
@@ -18,7 +18,6 @@
 
     
     {% for project in projects %}
-    <h2 class="text-center mt-5 text-white ">Found {{ projects|length }} projects</h2>
     <div class="container-fluid" style="background-color: rgba(0, 0, 0, 0.842); padding-top: 50px;">
         <div class="container-1">
             {% if user.profile.profile_picture%}

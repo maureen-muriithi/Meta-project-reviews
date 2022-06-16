@@ -121,13 +121,14 @@ def single_project(request, project_id):
 def search_project(request):
     projects = Project.objects.all()
     if 'search' in request.GET and request.GET['search']:
-        search_term = request.GET.get('search').lower()
-        projects = Project.search_project_name(search_term)
-        message = f'{search_term}'
+        title = request.GET.get('search').lower()
+        projects = Project.search_project(title)
+        message = f'{title}'
+        print(projects)
 
         args = {
         "projects": projects,
-        "message": message
+        "message": message,
     }
         return render(request, 'projects/search_project.html', args)
     else:

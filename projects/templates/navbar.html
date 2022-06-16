@@ -1,6 +1,7 @@
 
 {% load bootstrap4 %}
 {% load static%}
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -9,54 +10,52 @@
 <link rel="stylesheet" href="{% static 'css/baseprojects.css' %}">
 
   
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="btn-group">
-            <button class="btn btn-secondary btn-sm" style="padding: 10px; border-color: lawngreen; color: lawngreen; border-right: 0px;" type="button"> <i class="fa fa-bars" style="margin: 5px;" aria-hidden="true"></i>
-              MENU
-            </button>
-            <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" style="border-color: lawngreen; color: lawngreen; border-left: 0px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="sr-only">Toggle Dropdown</span>
-            </button> 
-            <div class="dropdown-menu" style="background-color: rgba(0, 0, 0, 0.829); color:lawngreen">
-                <a class="dropdown-item" href="{%url 'index' %}">Home</a>
-                {% if user.is_authenticated %}
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="btn-group">
+      <button class="btn btn-secondary btn-sm" style="padding: 10px; border-color: lawngreen; color: lawngreen; border-right: 0px;" type="button"> <i class="fa fa-bars" style="margin: 5px;" aria-hidden="true"></i>
+        MENU
+      </button>
+      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" style="border-color: lawngreen; color: lawngreen; border-left: 0px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button> 
+      <div class="dropdown-menu" style="background-color: rgba(0, 0, 0, 0.829); color:lawngreen">
+        <a class="dropdown-item" href="{%url 'index' %}">Home</a>
+        {% if user.is_authenticated %}
 
-                <a class="dropdown-item" href="{%url 'profile' %}">Profile</a>
-                <a class="dropdown-item" href="{%url 'projects' %}">All Projects</a>
-                <a class="dropdown-item" href="{%url 'submit_project'%}">Submit Project</a>
-                <a class="dropdown-item" href="#ModalCenter">Settings</a>
-                <a class="dropdown-item" href="{%url 'not_found' %}">Jobs and Talent</a>
-                <a class="dropdown-item" href="{%url 'not_found' %}">Blog</a>
-                <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: inherit; color: lawngreen; margin-left: 20px; border: 0;" >
-                  <span class="sr-only">Toggle Dropdown</span> API's
-                </button> 
-                <div class="dropdown-menu" style="background-color: rgba(0, 0, 0, 0.829); color:lawngreen">
-                  <a class="dropdown-item" href="{%url 'api_profile'%}">Profile Api</a>
-                  <a class="dropdown-item" href="{%url 'api_projects'%}">Projects Api</a>
-                </div>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/logout">Logout</a>
-              </div>
-              {% else %}
-              <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/accounts/login">Login</a>
-              </div>
-              {% endif %}
-
-
-          </div>
+        <a class="dropdown-item" href="{%url 'profile' %}">Profile</a>
+        <a class="dropdown-item" href="{%url 'projects' %}">All Projects</a>
+        <a class="dropdown-item" href="{%url 'submit_project'%}">Submit Project</a>
+        <a class="dropdown-item" href="#ModalCenter">Settings</a>
+        <a class="dropdown-item" href="{%url 'not_found' %}">Jobs and Talent</a>
+        <a class="dropdown-item" href="{%url 'not_found' %}">Blog</a>
+        <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: inherit; color: lawngreen; margin-left: 20px; border: 0;" >
+          <span class="sr-only">Toggle Dropdown</span> API's
+        </button> 
+        <div class="dropdown-menu" style="background-color: rgba(0, 0, 0, 0.829); color:lawngreen">
+          <a class="dropdown-item" href="{%url 'api_profile'%}">Profile Api</a>
+          <a class="dropdown-item" href="{%url 'api_projects'%}">Projects Api</a>
+        </div>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/logout">Logout</a>
+      </div>
+      {% else %}
+      <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/accounts/login">Login</a>
+      </div>
+      {% endif %}
     </div>
+  </div>
 
-    <a class="navbar-brand" style="margin-right: 15%; color: lawngreen; font-family:'BioRhyme', serif; font-size: xx-large; "  href="#">META PROJECTS REVIEWS</a>
-    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <a class="navbar-brand" style="margin-right: 15%; color: lawngreen; font-family:'BioRhyme', serif; font-size: xx-large; "  href="/">META PROJECTS REVIEWS</a>
+  <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <form class="form-inline my-2 my-lg-0" action="{%url 'search'%}" role="search" >
-      <input class="form-control mr-sm-3 " type="search" placeholder="Search" aria-label="Search" style="border-color: lawngreen; margin: 4px;">
-      <button class="btn btn-outline my-2 my-sm-0" type="submit" style="color: lawngreen; border-color: lawngreen;">Search</button>
-    </form>
 
-  </nav>
+  <form action="{%url 'search' %}" class=" navbar-form form-inline my-2 my-lg-0" role="search" >
+    <input class="form-control mr-sm-3 " type="search" placeholder="Search" aria-label="Search" style="border-color: lawngreen; margin: 4px;" name="search">
+    <button class="btn btn-outline my-2 my-sm-0" type="submit" style="color: lawngreen; border-color: lawngreen;"><i class="fa fa-search" aria-hidden="true"></i></button>
+  </form>
+
+</nav> 
